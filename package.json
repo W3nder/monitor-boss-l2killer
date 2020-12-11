@@ -4,6 +4,7 @@
   "description": "Status dos boss especial do L2killer",
   "main": "src/index.js",
   "scripts": {
+    "start": "nodemon ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -31,5 +32,8 @@
     "date-fns": "^2.16.1",
     "express": "^4.17.1",
     "tabletojson": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
