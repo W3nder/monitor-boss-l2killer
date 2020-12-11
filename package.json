@@ -1,0 +1,34 @@
+{
+  "name": "monitor-boss-l2killer",
+  "version": "1.0.0",
+  "description": "Status dos boss especial do L2killer",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/W3nder/monitor-boss-l2killer.git"
+  },
+  "keywords": [
+    "l2",
+    "l2killer",
+    "l2boss",
+    "status",
+    "boss",
+    "boss",
+    "token"
+  ],
+  "author": "W3nder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/W3nder/monitor-boss-l2killer/issues"
+  },
+  "homepage": "https://github.com/W3nder/monitor-boss-l2killer#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "cheerio": "^1.0.0-rc.3",
+    "date-fns": "^2.16.1",
+    "tabletojson": "^2.0.4"
+  }
+}
