@@ -67,7 +67,7 @@ module.exports = class {
 
             const addtime = format(addHours(date, time), 'dd/MM/yyyy HH:mm');
 
-            return [...boss, addtime, "---> " + differenceInMinutes(parse(addtime, 'dd/MM/yyyy HH:mm', new Date()), new Date()) + ' Minutos'] ;
+            return [...boss, addtime, differenceInMinutes(parse(addtime, 'dd/MM/yyyy HH:mm', new Date()), new Date())] ;
         }
         return [...boss, "GOGO VIVO!", ""];
     });
@@ -91,7 +91,13 @@ module.exports = class {
     let bossKiller = [];
 
     [...bossIlive, ...bossDead].forEach((boss) => {
-      bossKiller.push(boss[0], boss[1], boss[2], boss[3], boss[4]);
+      bossKiller.push({
+          nome: boss[0], 
+          status: boss[1],
+          dtMorte: boss[2],
+          dtSpawn: boss[3],
+          minutos: boss[4]
+      });
     });
 
     return bossKiller;
