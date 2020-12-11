@@ -2,8 +2,7 @@ const {
   parse,
   addHours,
   format,
-  differenceInMinutes,
-  setMinutes,
+  differenceInMinutes
 } = require("date-fns");
 
 require("date-fns/locale/pt-BR");
