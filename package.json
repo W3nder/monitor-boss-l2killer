@@ -2,9 +2,9 @@
   "name": "monitor-boss-l2killer",
   "version": "1.0.0",
   "description": "Status dos boss especial do L2killer",
-  "main": "src/index.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "nodemon ./src/index.js",
+    "start": "nodemon ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,8 +29,10 @@
   "dependencies": {
     "axios": "^0.21.0",
     "cheerio": "^1.0.0-rc.3",
+    "cors": "^2.8.5",
     "date-fns": "^2.16.1",
     "express": "^4.17.1",
+    "socket.io": "^3.0.4",
     "tabletojson": "^2.0.4"
   },
   "devDependencies": {

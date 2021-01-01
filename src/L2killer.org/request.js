@@ -8,16 +8,20 @@ module.exports = class  {
   }
 
   boss = async () => {
-    const html = await this.pegarHtml();
-    const chee = cheerio.load(html.data);
-    let tableBoss
-    chee("table").each(async (i, elem) => {
-      if (i == 0) {
-        tableBoss = tabletojson.convert(elem);
-      }
-    });
-
-    return tableBoss
+    try {
+      const html = await this.pegarHtml();
+      const chee = cheerio.load(html.data);
+      let tableBoss
+      chee("table").each(async (i, elem) => {
+        if (i == 0) {
+          tableBoss = tabletojson.convert(elem);
+        }
+      });
+  
+      return tableBoss
+    }catch(error) {
+      console.log('problema.')
+    }
   };
 
   pegarHtml = async () => {
