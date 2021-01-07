@@ -15,7 +15,7 @@ app.options('*', cors())
 
 const io = require('socket.io')(server, {
   cors: {
-    origin: "https://boss.unk.tools/",
+    origin: "https://boss.unk.tools",
     methods: ["GET", "POST"]
   }
 });
