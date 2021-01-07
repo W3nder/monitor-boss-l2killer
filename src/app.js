@@ -15,7 +15,7 @@ app.options('*', cors())
 
 const io = require('socket.io')(server, {
   cors: {
-    origin: "https://boss.unk.tools",
+    origin: "https://boss.unk.tools/",
     methods: ["GET", "POST"]
   }
 });
@@ -30,7 +30,7 @@ const bossToken = require("./L2killer.org/bossToken");
 
 app.use(index);
 
-cron.schedule('*/15 * * * * *', () => {
+cron.schedule('*/7 * * * * *', () => {
 
   const buscar = new request();
 
@@ -59,7 +59,7 @@ io.on("connection", (socket) => {
   if (interval) {
     clearInterval(interval);
   }
-  interval = setInterval(() => getApiAndEmit(socket), 3000);
+  interval = setInterval(() => getApiAndEmit(socket, io), 3000);
 
   socket.on("disconnect", () => {
     console.log("Client disconnected");
@@ -68,16 +68,16 @@ io.on("connection", (socket) => {
 });
 
 
-const getApiAndEmit = (socket) => {
+const getApiAndEmit = (socket, io) => {
   console.log(__dirname)
   let rawdata = fs.readFileSync(process.cwd() + '/src/cache/boss.json');
   let raidboss = JSON.parse(rawdata);
-  socket.emit('addNewMessage',raidboss)
+  io.emit('addNewMessage',raidboss)
 
   raidboss.forEach(bossLista => {
     console.log(bossLista)
    if(bossLista.status === 'Vivo') {
-      socket.emit('notificar', bossLista)
+     io.emit('notificar', bossLista)
    }
   })
 
