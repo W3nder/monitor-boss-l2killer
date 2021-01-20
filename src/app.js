@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require("express");
 const http = require("http");
 const cors = require("cors");
@@ -11,11 +13,12 @@ const server = http.createServer(app);
 app.use(express.static('public'));
 
 
+
 app.options('*', cors())
 
 const io = require('socket.io')(server, {
   cors: {
-    origin: "https://boss.unk.tools",
+    origin: process.env.APP_ORIGIN,
     methods: ["GET", "POST"]
   }
 });
@@ -30,7 +33,7 @@ const bossToken = require("./L2killer.org/bossToken");
 
 app.use(index);
 
-cron.schedule('*/7 * * * * *', () => {
+cron.schedule('*/15 * * * * *', () => {
 
   const buscar = new request();
 
@@ -47,6 +50,7 @@ cron.schedule('*/7 * * * * *', () => {
       let data = JSON.stringify(bossList);
       fs.writeFileSync(process.cwd() + '/src/cache/boss.json', data);
     }
+
   });
 
   console.log('running a task every minute');
@@ -56,20 +60,30 @@ let interval;
 
 io.on("connection", (socket) => {
   console.log("New client connected");
-  // if (interval) {
-  //   clearInterval(interval);
-  // }
+  if (interval) {
+    clearInterval(interval);
+  }
+
+
+  getList(socket, io)
   interval = setInterval(() => getApiAndEmit(socket, io), 3000);
 
-  // socket.on("disconnect", () => {
-  //   console.log("Client disconnected");
-  //   clearInterval(interval);
-  // });
+  socket.on("disconnect", () => {
+    console.log("Client disconnected");
+    clearInterval(interval);
+  });
+
 });
 
 
 const getApiAndEmit = (socket, io) => {
   console.log(__dirname)
+
+  getList(socket, io)
+
+};
+
+const getList = (socket, io) => {
   let rawdata = fs.readFileSync(process.cwd() + '/src/cache/boss.json');
   let raidboss = JSON.parse(rawdata);
   io.emit('addNewMessage',raidboss)
@@ -80,7 +94,6 @@ const getApiAndEmit = (socket, io) => {
      io.emit('notificar', bossLista)
    }
   })
-
-};
+}
 
 server.listen(port, () => console.log(`Listening on port ${port}`));
