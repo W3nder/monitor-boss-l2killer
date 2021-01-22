@@ -66,7 +66,8 @@ io.on("connection", (socket) => {
 
 
   getList(socket, io)
-  interval = setInterval(() => getApiAndEmit(socket, io), 3000);
+  
+  interval = setInterval(() => getApiAndEmit(socket, io), 1000);
 
   socket.on("disconnect", () => {
     console.log("Client disconnected");
