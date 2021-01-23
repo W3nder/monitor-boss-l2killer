@@ -33,7 +33,7 @@ const bossToken = require("./L2killer.org/bossToken");
 
 app.use(index);
 
-cron.schedule('*/15 * * * * *', () => {
+cron.schedule('*/10 * * * * *', () => {
 
   const buscar = new request();
 

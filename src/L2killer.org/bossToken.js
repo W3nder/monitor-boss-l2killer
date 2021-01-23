@@ -9,6 +9,7 @@ require("date-fns/locale/pt-BR");
 
 const RaidBossList = [
   ["Amber", 36, process.env.APP_URL + 'npc/amber.jpg'],
+  ["Faf Herald Lokness", 12, process.env.APP_URL + 'npc/Lokness.jpg'],
   ["Anakim", 36, process.env.APP_URL + 'npc/Mob_25286.jpg' ],
   ["Antaras", 120, process.env.APP_URL + 'npc/antaras.jpg' ],
   ["Baium", 72, process.env.APP_URL + 'npc/baium.jpg' ],
