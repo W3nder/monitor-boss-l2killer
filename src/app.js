@@ -31,6 +31,7 @@ const request = require("./L2killer.org/request");
 const listBoss = require("./L2killer.org/listBoss");
 const bossToken = require("./L2killer.org/bossToken");
 
+
 app.use(index);
 
 cron.schedule('*/10 * * * * *', () => {
