@@ -212,7 +212,7 @@ const bossUp = [
   {
     nome: "Discard Guardian",
     localizacao: "4º OPC DO CAT DE HEINE",
-    tempo: 12,
+    tempo: 24,
     avatar: process.env.APP_URL + "npc/LineageMonster.stone_golem_bi_0_0.1.png",
   },
 ];
