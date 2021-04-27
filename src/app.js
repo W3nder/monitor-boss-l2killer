@@ -86,16 +86,21 @@ const getApiAndEmit = (socket, io) => {
 };
 
 const getList = (socket, io) => {
+
   let rawdata = fs.readFileSync(process.cwd() + '/src/cache/boss.json');
   let raidboss = JSON.parse(rawdata);
-  io.emit('addNewMessage',raidboss)
 
+    
   raidboss.forEach(bossLista => {
     console.log(bossLista)
    if(bossLista.status === 'Vivo') {
      io.emit('notificar', bossLista)
    }
   })
+  
+  io.emit('addNewMessage',raidboss)
+
+
 }
 
 server.listen(port, () => console.log(`Listening on port ${port}`));
