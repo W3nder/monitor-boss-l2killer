@@ -138,7 +138,7 @@ const bossUp = [
   {
     nome: "Antaras",
     localizacao: "11 OPC GATO GIRAN",
-    tempo: 120,
+    tempo: 96,
     avatar: process.env.APP_URL + "npc/antaras.jpg",
   },
   {
