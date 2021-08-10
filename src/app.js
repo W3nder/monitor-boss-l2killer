@@ -5,14 +5,11 @@ const http = require("http");
 const cors = require("cors");
 const cron = require('node-cron');
 const fs = require('fs');
-const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
 
 app.use(express.static('public'));
-
-
 
 app.options('*', cors())
 
@@ -27,19 +24,21 @@ const port = process.env.PORT || 4001;
 
 const index = require("./routes/index");
 
-const request = require("./L2killer.org/request");
-const listBoss = require("./L2killer.org/listBoss");
-const bossToken = require("./L2killer.org/bossToken");
-
+const listBoss = require("./lib/listBoss");
+const bossToken = require("./lib/bossToken");
+const bossTokenKiller = require("./services/index")
 
 app.use(index);
 
-cron.schedule('*/2 * * * * *', () => {
+const killer = new bossTokenKiller();
 
-  const buscar = new request();
+cron.schedule('*/2 * * * * *', async () => {
 
-  buscar.boss().then(async (boss) => {
-    const bt = await new bossToken(listBoss(boss[0]));
+  const lista = await killer.boss()
+
+  if(lista.length) {
+
+    const bt = await new bossToken(listBoss(lista[0]));
 
     let bossList = []
 
@@ -52,7 +51,7 @@ cron.schedule('*/2 * * * * *', () => {
       fs.writeFileSync(process.cwd() + '/src/cache/boss.json', data);
     }
 
-  });
+  }
 
   console.log('running a task every minute');
 });
@@ -64,7 +63,6 @@ io.on("connection", (socket) => {
   if (interval) {
     clearInterval(interval);
   }
-
 
   getList(socket, io)
   
@@ -79,17 +77,13 @@ io.on("connection", (socket) => {
 
 
 const getApiAndEmit = (socket, io) => {
-  console.log(__dirname)
-
   getList(socket, io)
-
 };
 
 const getList = (socket, io) => {
 
   let rawdata = fs.readFileSync(process.cwd() + '/src/cache/boss.json');
   let raidboss = JSON.parse(rawdata);
-
     
   raidboss.forEach(bossLista => {
     console.log(bossLista)
@@ -99,8 +93,6 @@ const getList = (socket, io) => {
   })
   
   io.emit('addNewMessage',raidboss)
-
-
 }
 
 server.listen(port, () => console.log(`Listening on port ${port}`));

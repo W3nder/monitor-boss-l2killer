@@ -5,7 +5,6 @@ module.exports = (json) => {
   json.forEach((element) => {
     if (element[0]) {
       let status;
-      let date;
       n++;
       switch (element[1]) {
         case "Morto":
