@@ -265,7 +265,11 @@ module.exports = class {
           .filter((e) => e.nome === boss[0])
           .map((a) => a.avatar)[0];
 
-        return [...boss, img, "GOGO VIVO!", ""];
+          const localizacao = bossUp
+            .filter((e) => e.nome === boss[0])
+            .map((a) => a.localizacao)[0];
+
+        return [...boss, img, localizacao, "GOGO VIVO!", ""];
       });
 
     const bossIlive = raidBoss.filter((elem, i) => {
