@@ -265,9 +265,9 @@ module.exports = class {
           .filter((e) => e.nome === boss[0])
           .map((a) => a.avatar)[0];
 
-          const localizacao = bossUp
-            .filter((e) => e.nome === boss[0])
-            .map((a) => a.localizacao)[0];
+        const localizacao = bossUp
+          .filter((e) => e.nome === boss[0])
+          .map((a) => a.localizacao)[0];
 
         return [...boss, img, localizacao, "GOGO VIVO!", ""];
       });
@@ -281,8 +281,8 @@ module.exports = class {
         return elem[4] !== "GOGO VIVO!";
       })
       .sort((a, b) => {
-        var dateA = parse(a[3], "dd/MM/yyyy HH:mm:ss", new Date());
-        var dateB = parse(b[3], "dd/MM/yyyy HH:mm:ss", new Date());
+        var dateA = parse(a[2], "dd/MM/yyyy HH:mm:ss", new Date());
+        var dateB = parse(b[2], "dd/MM/yyyy HH:mm:ss", new Date());
         if (dateA < dateB) return -1;
         if (dateA > dateB) return 1;
         return 0;
