@@ -129,12 +129,12 @@ const bossUp = [
     tempo: 12,
     avatar: process.env.APP_URL + "npc/Mob_25463.jpg",
   },
-  // {
-  //   nome: "Queen Ant",
-  //   localizacao: "4 OPC GATO DION/15 OPC GATO DE GLUDIO",
-  //   tempo: 22,
-  //   avatar: process.env.APP_URL + "npc/queen_ant.jpg",
-  // },
+  {
+    nome: "Queen Ant",
+    localizacao: "4 OPC GATO DION/15 OPC GATO DE GLUDIO",
+    tempo: 22,
+    avatar: process.env.APP_URL + "npc/queen_ant.jpg",
+  },
   {
     nome: "Antaras",
     localizacao: "11 OPC GATO GIRAN",
@@ -287,7 +287,6 @@ module.exports = class {
     let bossKiller = [];
 
     [...bossIlive, ...bossDead].forEach((boss) => {
-      console.log(boss);
       bossKiller.push({
         nome: boss[0],
         status: boss[1],
