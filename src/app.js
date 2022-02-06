@@ -85,7 +85,7 @@ const getList = (socket, io) => {
     }
   });
 
-  io.emit("bossLista", raidboss);
+  io.emit("addNewMessage", raidboss);
 };
 
 server.listen(port, () => console.log(`Listening on port ${port}`));
