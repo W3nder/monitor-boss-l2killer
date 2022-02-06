@@ -215,6 +215,12 @@ const bossUp = [
     tempo: 24,
     avatar: process.env.APP_URL + "npc/LineageMonster.stone_golem_bi_0_0.1.png",
   },
+  {
+    nome: "Greyclaw Kutus",
+    localizacao: "sem localização",
+    tempo: 24,
+    avatar: process.env.APP_URL + "npc/greyclaw.jpg",
+  },
 ];
 
 module.exports = class {
@@ -277,6 +283,7 @@ module.exports = class {
         return elem[4] !== "GOGO VIVO!";
       })
       .sort((a, b) => {
+        console.log(a[3]);
         var dateA = parse(a[3], "dd/MM/yyyy HH:mm:ss", new Date());
         var dateB = parse(b[3], "dd/MM/yyyy HH:mm:ss", new Date());
         if (dateA < dateB) return -1;

@@ -20,7 +20,7 @@ const io = require("socket.io")(server, {
   },
 });
 
-const port = process.env.PORT || 4001;
+const port = process.env.PORT || 1337;
 
 const index = require("./routes/index");
 
@@ -85,7 +85,7 @@ const getList = (socket, io) => {
     }
   });
 
-  io.emit("addNewMessage", raidboss);
+  io.emit("bossLista", raidboss);
 };
 
 server.listen(port, () => console.log(`Listening on port ${port}`));
