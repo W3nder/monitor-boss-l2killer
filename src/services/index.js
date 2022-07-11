@@ -3,7 +3,7 @@ const table = require("tabletojson").Tabletojson;
 
 module.exports = class  {
   constructor() {
-    this.url = "https://l2killer.org/?page=boss";
+    this.url = "https://www.l2killer.org/?page=boss";
   }
 
   boss = async () => {
