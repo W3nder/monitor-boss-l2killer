@@ -13,6 +13,8 @@ module.exports = class  {
           cookie: "atualstudio_language=pt;",
         },
       });
+      
+      console.log(data)
       return table.convert(data)
       
     } catch (error) {
