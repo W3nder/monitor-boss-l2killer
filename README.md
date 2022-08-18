@@ -1,6 +1,4 @@
-<h1 align="center">
-  <img alt="GoStack" src="https://www.paygol.com/assets/images/backgrounds/pausesteel70.png?v=112" width="417px" />
-</h1>
+
 <h3 align="center">
   Raid Boss Status
 </h3>
